@@ -9,11 +9,11 @@ from torch import torch
 # transform模块的主要实现功能是 几何变换或其他变换，如旋转、拉伸和拉东变换等
 # SimilarityTransform 相似变换
 from skimage.transform import SimilarityTransform
-from utils.nms.py_cpu_nms import py_cpu_nms
-from data import cfg_re50
-from layers.functions.prior_box import PriorBox
-from utils.box_utils import decode, decode_landm
-from models.retinaface import RetinaFace
+from external.Pytorch_Retinaface.utils.nms.py_cpu_nms import py_cpu_nms
+from external.Pytorch_Retinaface.data import cfg_re50
+from external.Pytorch_Retinaface.layers.functions.prior_box import PriorBox
+from external.Pytorch_Retinaface.utils.box_utils import decode, decode_landm
+from external.Pytorch_Retinaface.models.retinaface import RetinaFace
 
 
 def norm_crop(img, landmark, image_size=112):

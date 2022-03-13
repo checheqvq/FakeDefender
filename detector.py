@@ -1,14 +1,4 @@
-import os
-import sys
-import time
-
 import cv2
-sys.path.append('/tmp/pycharm_project_deepfake')
-sys.path.append('/tmp/pycharm_project_deepfake/external/EfficientNet-PyTorch')
-sys.path.append('/tmp/pycharm_project_deepfake/external/Pytorch_Retinaface')
-sys.path.append('/tmp/pycharm_project_deepfake/model_def')
-sys.path.append('/home/yiboliu/.pycharm_helpers/pycharm_display')
-sys.path.append('/home/yiboliu/.pycharm_helpers/pycharm_matplotlib_backend')
 import numpy as np
 from PIL import Image
 from torch import torch
@@ -16,12 +6,7 @@ import torch.nn.functional as F
 from torchvision import transforms as T
 from face_utils import norm_crop, FaceDetector
 from model_def import WSDAN, xception
-from flask import Flask, jsonify, request
 from rotation_test import rotation_dealer
-import json
-import base64
-
-app = Flask(__name__)
 
 
 class DFDCImageLoader:
@@ -113,6 +98,10 @@ class DFDCImageLoader:
 
         return boxes, scores
 
+    def predict_raw(self, img_raw):
+        img = cv2.imdecode(np.frombuffer(img_raw, np.uint8), cv2.IMREAD_COLOR)
+        return self.predict(img)
+
 
 # load model
 # 只要设置了torch.set_grad_enabled(False)那么接下来所有的tensor运算产生的新的节点都是不可求导的，
@@ -130,63 +119,3 @@ face_detector.load_checkpoint("./input/dfdc-pretrained-2/RetinaFace-Resnet50-fix
 # T.ToTensor() 把图片转换成张量的形式  print(T.ToTensor()) --> ToTensor()
 loader = DFDCImageLoader(face_detector, T.ToTensor())
 print("loader ok")
-
-
-@app.route('/', methods=['POST', 'GET'])
-def hello():
-    print("test")
-    return "Welcome to Deepfake Server."
-
-
-@app.route('/predict', methods=['POST', 'GET'])
-def predict():
-    print(time.strftime("%Y-%m-%d-%H_%M_%S", time.localtime()))
-    if request.method == 'POST':
-        data = request.get_json()
-        # data["image"] 是str类型
-        data = json.loads(data,strict=False)
-        img_encode = base64.b64decode(data["image"])
-        # np.frombuffer() frombuffer将data以流的形式读入转化成ndarray对象
-        # 第一参数为stream,第二参数为返回值的数据类型，第三参数指定从stream的第几位开始读入
-        # np.uint8是用opencv处理图像时，其获得的矩阵类型是uint8
-        # cv2.IMREAD_COLOR：默认参数，读入一副彩色图片，忽略alpha通道
-        # type(img) --> numpy.ndarray
-        img = cv2.imdecode(np.frombuffer(img_encode, np.uint8), cv2.IMREAD_COLOR)
-        # faces 即是 boxes的取值
-        faces, scores = loader.predict(img)
-
-
-        response = {
-            "faceNum": len(faces)
-        }
-        faceList = []
-        if len(faces) != 0:
-            for i in range(len(faces)):
-                face = faces[i]
-                faceList.append({
-                    # item() 取出张量具体位置的元素元素值，并且返回的是该位置元素值的高精度值，保持原元素类型不变
-                    "x1": int(face[0].item()),
-                    "y1": int(face[1].item()),
-                    "x2": int(face[2].item()),
-                    "y2": int(face[3].item()),
-                    "score": scores[i].item()
-                })
-
-        response["faces"] = faceList
-
-        # 注释的代码是看打框后的图片
-        # cv2.rectangle(img, (faceList[0]["x1"], faceList[0]["y1"]), (faceList[0]["x2"], faceList[0]["y2"]), (0, 0, 255), 2)
-        # Image.fromarray(img[:, :, ::-1]).show()
-
-        print(json.dumps(response))
-        print("The server is still running...")
-        print(time.strftime("%Y-%m-%d-%H_%M_%S", time.localtime()))
-        return jsonify(response)
-
-
-if __name__ == "__main__":
-    app.run(
-        # host='10.136.126.13',
-        host='127.0.0.1',
-        port=5000
-    )
