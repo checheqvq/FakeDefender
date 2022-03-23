@@ -6,13 +6,11 @@ import torch.nn.functional as F
 from torchvision import transforms as T
 from face_utils import norm_crop, FaceDetector
 from model_def import WSDAN, xception
-from rotation_test import rotation_dealer
 
 
 class DFDCImageLoader:
     def __init__(self, face_detector, transform=None):
         self.face_detector = face_detector
-        self.rotation_dealer = rotation_dealer()
         self.transform = transform
         # tensor view函数返回一个新tensor与源tensor共享内存，不改变数据，只改变形状
         # 重构张量维度 四维张量 张量 解释 https://www.jianshu.com/p/f34457c222c5
@@ -21,8 +19,8 @@ class DFDCImageLoader:
         # 第二个方括号——列数据——对应参数第3个
         # 第三个方括号——行数据——对应参数第2个，
         # 第四个方括号——数量——对应参数第1个
-        self.zhq_nm_avg = torch.Tensor([.4479, .3744, .3473]).view(1, 3, 1, 1).cuda(0)
-        self.zhq_nm_std = torch.Tensor([.2537, .2502, .2424]).view(1, 3, 1, 1).cuda(0)
+        self.zhq_nm_avg = torch.Tensor([.4479, .3744, .3473]).view(1, 3, 1, 1).cpu()
+        self.zhq_nm_std = torch.Tensor([.2537, .2502, .2424]).view(1, 3, 1, 1).cpu()
 
         # Xception预训练权重文件
         # xception 引用自model_def文件夹
@@ -30,18 +28,18 @@ class DFDCImageLoader:
         ckpt = torch.load("./input/dfdc-pretrained-2/xception-hg-2.pth")
         model1.load_state_dict(ckpt["state_dict"])
         # type(model1) --> model_def.xception.Xception
-        model1 = model1.cuda(0)
+        model1 = model1.cpu()
         model1.eval()
 
         # WS-DAN w/ Xception的预训练权重文件
-        model2 = WSDAN(num_classes=2, M=8, net="xception", pretrained=False).cuda(0)
-        ckpt = torch.load("./input/dfdc-pretrained-2/ckpt_x.pth")
+        model2 = WSDAN(num_classes=2, M=8, net="xception", pretrained=False).cpu()
+        ckpt = torch.load("./input/dfdc-pretrained-2/ckpt_x.pth", map_location='cpu')
         model2.load_state_dict(ckpt["state_dict"])
         model2.eval()
 
         # WS-DAN w/ EfficientNet-b3的预训练权重文件
-        model3 = WSDAN(num_classes=2, M=8, net="efficientnet", pretrained=False).cuda(0)
-        ckpt = torch.load("./input/dfdc-pretrained-2/ckpt_e.pth")
+        model3 = WSDAN(num_classes=2, M=8, net="efficientnet", pretrained=False).cpu()
+        ckpt = torch.load("./input/dfdc-pretrained-2/ckpt_e.pth", map_location='cpu')
         model3.load_state_dict(ckpt["state_dict"])
         model3.eval()
 
@@ -67,7 +65,7 @@ class DFDCImageLoader:
         batch_buf.append(aligned)
         # torch.stack()是将原来的几个tensor按照一定方式进行堆叠，然后在按照堆叠后的维度进行切分。
         batch = torch.stack(batch_buf)
-        batch = batch.cuda(0)
+        batch = batch.cpu()
 
         # bilinear 双线性插值，
         i1 = F.interpolate(batch, size=299, mode="bilinear")
@@ -89,7 +87,6 @@ class DFDCImageLoader:
         boxes, landms = self.face_detector.detect(img)
         if boxes.shape[0] == 0:
             return boxes, []
-        boxes, landms = self.rotation_dealer.rotation_dealer(img, boxes, landms)
         scores = []
         for landmark in landms:
             # Tensor.detach() 阻断反向传播 ndarry.astype(np.int)  取整

@@ -1,15 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
--------------------------------------------------
-   File Name：     logger.py
-   Description :
-   Author :       unstoppable
-   date：          21/11/2021
--------------------------------------------------
-   Change Activity:
-                   21/11/2021:
--------------------------------------------------
-"""
 import logging
 from logging.handlers import TimedRotatingFileHandler
 
@@ -20,5 +8,7 @@ def logger_init_app(app):
     formatter = logging.Formatter("[%(asctime)s][%(filename)s:%(lineno)d][%(levelname)s] - %(message)s")
     handler.setFormatter(formatter)
     app.logger.addHandler(handler)
+    logging.getLogger('werkzeug').addHandler(handler)
     app.logger.setLevel(logging.DEBUG)
+    app.logger.info("-------------------------------New Running--------------------------------")
 

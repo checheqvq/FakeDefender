@@ -1,5 +1,4 @@
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-
 from ..config import SECRET_KEY
 
 serializer = Serializer(SECRET_KEY, expires_in=60 * 60 * 24)

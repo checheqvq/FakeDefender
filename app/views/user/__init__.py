@@ -10,6 +10,6 @@
                    13/11/2021:
 -------------------------------------------------
 """
-from .client_view import *
+from .user_view import *
 
 __ALL__ = ['client_app']
