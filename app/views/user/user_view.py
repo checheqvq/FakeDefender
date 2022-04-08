@@ -69,7 +69,7 @@ def login():
         data = request.get_json()
         user = User.query.get(data['phone'])
         if user.check_password(data['password']):
-            flask_login.login_user(user)
+            flask_login.login_user(user, remember=True)
             current_app.logger.info(f"{data['phone']}登录成功")
             return message(0, "登陆成功", None)
         else:
@@ -81,7 +81,7 @@ def login():
         # return message(1)
 
 
-@user_app.route('/logout', methods=['GET'])
+@user_app.route('/logout', methods=['GET', 'POST'])
 @flask_login.login_required
 def logout():
     flask_login.logout_user()
