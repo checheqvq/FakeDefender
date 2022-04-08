@@ -11,17 +11,18 @@ login_manager.login_view = 'login'
 login_manager.login_message = '需要登陆后才能访问本页'
 
 
-def message(status, msg):
-    data = {
-        'status': status,
-        'msg': msg
+def message(status, msg, data):
+    jsonObj = {
+        'code': status,
+        'msg': msg,
+        'data': data
     }
-    return jsonify(data)
+    return jsonify(jsonObj)
 
 
 @user_app.route('/', methods=['GET', 'POST'])
 def hello():
-    return message(0, "hello")
+    return message(0, "hello", None)
 
 
 @user_app.route('/get_verif_code', methods=['POST'])
@@ -31,15 +32,15 @@ def get_verif_code():
         user = get_user(data['phone'])
         if user:
             current_app.logger.info(f"{data['phone']}已经被注册了")
-            return message(1, '该手机已经被注册了')
+            return message(1, '该手机已经被注册了', None)
         else:
             current_app.logger.info(f"{data['phone']}已经发送验证码")
             send_verif_code(data['phone'], phone_code_map)
-            return message(0, "已发送短信验证码，请填入验证码")
+            return message(0, "已发送短信验证码，请填入验证码", None)
     except Exception as e:
         current_app.logger.info("获取验证码失败")
         # return message('bad register')
-        return message(1, "获取验证码失败")
+        return message(1, "获取验证码失败", None)
 
 
 @user_app.route('/register', methods=['GET', 'POST'])
@@ -52,14 +53,14 @@ def register():
             add_user(data['phone'], data['password'])
             del_verif_code(data['phone'], phone_code_map)
             current_app.logger.info(f"{data['phone']}注册成功")
-            return message(0, "注册成功")
+            return message(0, "注册成功", None)
         else:
             current_app.logger.info(f"{data['phone']}验证码错误")
-            return message(1, "验证码错误")
+            return message(1, "验证码错误", None)
     except Exception as e:
         print(e)
         current_app.logger.info("注册失败")
-        return message(1, "注册失败")
+        return message(1, "注册失败", None)
 
 
 @user_app.route('/login', methods=['POST'])
@@ -70,13 +71,13 @@ def login():
         if user.check_password(data['password']):
             flask_login.login_user(user)
             current_app.logger.info(f"{data['phone']}登录成功")
-            return message(0, "登陆成功")
+            return message(0, "登陆成功", None)
         else:
             current_app.logger.info(f"{data['phone']}登录失败")
-            return message(1, '账号或密码错误')
+            return message(1, '账号或密码错误', None)
     except Exception as e:
         print(e)
-        return message(1, '没有此用户')
+        return message(1, '没有此用户', None)
         # return message(1)
 
 
@@ -84,7 +85,7 @@ def login():
 @flask_login.login_required
 def logout():
     flask_login.logout_user()
-    return message(0, '退出成功')
+    return message(0, '退出成功', None)
 
 
 @user_app.route('/predict', methods=['GET', 'POST'])
@@ -112,7 +113,7 @@ def predict():
                 })
 
         response["faces"] = faceList
-        return jsonify(response)
+        return message(0, "识别成功", response)
 
 
 @login_manager.user_loader
@@ -134,5 +135,5 @@ def request_loader(request):
 
 @login_manager.unauthorized_handler
 def unauthorized_handler():
-    return message(0, '未授权访问')
+    return message(0, '未授权访问', None)
 
