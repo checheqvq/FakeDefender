@@ -3,8 +3,8 @@ import flask_login
 
 from detector import loader
 from flask import jsonify, request, current_app
-from app.extensions import login_manager, send_verif_code, phone_code_map, del_verif_code
-from app.models.user import User, get_user, add_user
+from app.extensions import login_manager, send_verif_code, phone_code_map, del_verif_code, get_app_info
+from app.models.user import User
 from app.blueprints import user_app
 
 login_manager.login_view = 'login'
@@ -29,56 +29,33 @@ def hello():
 def get_verif_code():
     try:
         data = request.get_json()
-        user = get_user(data['phone'])
-        if user:
-            current_app.logger.info(f"{data['phone']}已经被注册了")
-            return message(1, '该手机已经被注册了', None)
-        else:
-            current_app.logger.info(f"{data['phone']}已经发送验证码")
-            send_verif_code(data['phone'], phone_code_map)
-            return message(0, "已发送短信验证码，请填入验证码", None)
+        send_verif_code(data['phone'], phone_code_map)
+        current_app.logger.info(f"{data['phone']}已经发送验证码")
+        return message(0, "已发送短信验证码，请填入验证码", None)
     except Exception as e:
         current_app.logger.info("获取验证码失败")
         # return message('bad register')
         return message(1, "获取验证码失败", None)
 
 
-@user_app.route('/register', methods=['GET', 'POST'])
+@user_app.route('/login', methods=['GET', 'POST'])
 def register():
     try:
         data = request.get_json()
         current_app.logger.info(f"手机号验证码映射：{phone_code_map}")
         print(phone_code_map)
         if data['code'] == phone_code_map[data['phone']]:
-            add_user(data['phone'], data['password'])
+            flask_login.login_user(User(data['phone']), remember=True)
             del_verif_code(data['phone'], phone_code_map)
-            current_app.logger.info(f"{data['phone']}注册成功")
-            return message(0, "注册成功", None)
+            current_app.logger.info(f"{data['phone']}登录成功")
+            return message(0, "登录成功", None)
         else:
             current_app.logger.info(f"{data['phone']}验证码错误")
             return message(1, "验证码错误", None)
     except Exception as e:
         print(e)
-        current_app.logger.info("注册失败")
-        return message(1, "注册失败", None)
-
-
-@user_app.route('/login', methods=['POST'])
-def login():
-    try:
-        data = request.get_json()
-        user = User.query.get(data['phone'])
-        if user.check_password(data['password']):
-            flask_login.login_user(user, remember=True)
-            current_app.logger.info(f"{data['phone']}登录成功")
-            return message(0, "登陆成功", None)
-        else:
-            current_app.logger.info(f"{data['phone']}登录失败")
-            return message(1, '账号或密码错误', None)
-    except Exception as e:
-        print(e)
-        return message(1, '没有此用户', None)
-        # return message(1)
+        current_app.logger.info("登录失败")
+        return message(1, "登录失败", None)
 
 
 @user_app.route('/logout', methods=['GET', 'POST'])
@@ -116,24 +93,38 @@ def predict():
         return message(0, "识别成功", response)
 
 
+@user_app.route('/get_app_info', methods=['GET', 'POST'])
+@flask_login.login_required
+def get_app():
+    data = request.get_json()
+    app_info, ok = get_app_info(data['pkgName'])
+    if ok:
+        return message(0, "获取成功", app_info)
+    else:
+        return message(1, "获取失败", None)
+
+
+@user_app.route('/check_state', methods=['GET', 'POST'])
+@flask_login.login_required
+def check_state():
+    return message(0, "登录成功", None)
+
+
 @login_manager.user_loader
 def load_user(phone):
-    user = User.query.get(phone)
-    return user
+    return User(phone)
 
 
 @login_manager.request_loader
 def request_loader(request):
     try:
         phone = request.get_json()['phone']
-        user = get_user(phone)
-        if user:
-            return user
+        return User(phone)
     except Exception:
         return
 
 
 @login_manager.unauthorized_handler
 def unauthorized_handler():
-    return message(0, '未授权访问', None)
+    return message(1, '未授权访问', None)
 
