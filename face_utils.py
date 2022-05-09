@@ -57,7 +57,7 @@ def norm_crop(img, landmark, image_size=112):
 
 class FaceDetector:
     # cofidence_threshold 置信阈值
-    def __init__(self, device="cpu", confidence_threshold=0.8):
+    def __init__(self, device="cuda", confidence_threshold=0.99):
         self.device = device
         self.confidence_threshold = confidence_threshold
 

@@ -1,0 +1,1536 @@
+[2022-04-11 14:39:12,916][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-04-11 14:39:12,959][_internal.py:113][INFO] -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+[2022-05-05 15:41:25,758][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 15:41:25,760][_internal.py:225][INFO] -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+[2022-05-05 15:47:24,624][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 15:48:28,859][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 15:48:28,898][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 15:48:51,260][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:48:51] "POST /user/ HTTP/1.1" 200 -
+[2022-05-05 15:48:56,702][user_view.py:45][INFO] - 手机号验证码映射：{}
+[2022-05-05 15:48:56,702][user_view.py:57][INFO] - 登录失败
+[2022-05-05 15:48:56,703][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:48:56] "POST /user/login HTTP/1.1" 200 -
+[2022-05-05 15:49:01,129][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:49:01] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 15:49:07,116][code_sender.py:43][INFO] - 15707399157 的验证码发送状态短信发送成功
+[2022-05-05 15:49:07,116][user_view.py:33][INFO] - 15707399157已经发送验证码
+[2022-05-05 15:49:07,117][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:49:07] "POST /user/get_verif_code HTTP/1.1" 200 -
+[2022-05-05 15:49:22,964][user_view.py:45][INFO] - 手机号验证码映射：{'15707399157': '1231'}
+[2022-05-05 15:49:22,965][user_view.py:50][INFO] - 15707399157登录成功
+[2022-05-05 15:49:22,967][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:49:22] "POST /user/login HTTP/1.1" 200 -
+[2022-05-05 15:49:38,512][app.py:1454][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/new_detector.py", line 48, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/new_detector.py", line 42, in predict
+    scores.append(self.predictOneFace(img, landmarks))
+  File "/home/yiboliu/FakeDefender_0505/new_detector.py", line 29, in predictOneFace
+    output = model(batch, batch)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/model_def/new_xception.py", line 269, in forward
+    x1 = Xception.entry_forward_branch_ori(self, x)
+  File "/home/yiboliu/FakeDefender_0505/model_def/new_xception.py", line 248, in entry_forward_branch_ori
+    x = self.conv1_ori(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 345, in forward
+    return self.conv2d_forward(input, self.weight)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 341, in conv2d_forward
+    return F.conv2d(input, weight, self.bias, self.stride,
+RuntimeError: Input type (torch.cuda.FloatTensor) and weight type (torch.FloatTensor) should be the same
+[2022-05-05 15:49:38,611][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:49:38] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 15:51:39,399][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 15:51:39,438][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 15:51:56,024][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:51:56] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 15:52:22,472][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:52:22] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 15:52:32,416][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:52:32] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 15:52:55,209][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:52:55] "POST /user/ HTTP/1.1" 200 -
+[2022-05-05 15:52:56,720][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:52:56] "POST /user/ HTTP/1.1" 200 -
+[2022-05-05 15:52:57,660][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:52:57] "POST /user/ HTTP/1.1" 200 -
+[2022-05-05 15:52:58,384][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:52:58] "POST /user/ HTTP/1.1" 200 -
+[2022-05-05 15:53:02,978][user_view.py:45][INFO] - 手机号验证码映射：{}
+[2022-05-05 15:53:02,979][user_view.py:57][INFO] - 登录失败
+[2022-05-05 15:53:02,980][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:53:02] "POST /user/login HTTP/1.1" 200 -
+[2022-05-05 15:53:12,632][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:53:12] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 15:54:12,179][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:54:12] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 15:54:28,281][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:54:28] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 15:56:56,934][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 15:56:56,974][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 15:57:10,695][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:57:10] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 15:57:19,916][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:57:19] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 15:57:28,855][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:57:28] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 15:57:37,360][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:57:37] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 15:57:47,022][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:57:47] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 15:58:14,588][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:58:14] "POST /user/ HTTP/1.1" 200 -
+[2022-05-05 15:58:15,166][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:58:15] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 15:58:18,022][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:58:18] "POST /user/ HTTP/1.1" 200 -
+[2022-05-05 15:58:19,017][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:58:19] "POST /user/ HTTP/1.1" 200 -
+[2022-05-05 15:58:19,586][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:58:19] "POST /user/ HTTP/1.1" 200 -
+[2022-05-05 15:58:20,219][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:58:20] "POST /user/ HTTP/1.1" 200 -
+[2022-05-05 15:58:20,819][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:58:20] "POST /user/ HTTP/1.1" 200 -
+[2022-05-05 15:58:21,320][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:58:21] "POST /user/ HTTP/1.1" 200 -
+[2022-05-05 15:58:32,400][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:58:32] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 15:59:47,388][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 15:59:47,426][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 15:59:56,033][app.py:1454][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 100, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 94, in predict
+    scores.append(self.predictOneFace(img, landmarks))
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 73, in predictOneFace
+    o1 = model1(i1).softmax(-1)[:, 1].cpu().detach().numpy()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/model_def/xception.py", line 225, in forward
+    x = self.features(input)
+  File "/home/yiboliu/FakeDefender_0505/model_def/xception.py", line 184, in features
+    x = self.conv1(input)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 345, in forward
+    return self.conv2d_forward(input, self.weight)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 341, in conv2d_forward
+    return F.conv2d(input, weight, self.bias, self.stride,
+RuntimeError: Input type (torch.FloatTensor) and weight type (torch.cuda.FloatTensor) should be the same
+[2022-05-05 15:59:56,061][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 15:59:56] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 16:00:04,642][app.py:1454][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 100, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 94, in predict
+    scores.append(self.predictOneFace(img, landmarks))
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 73, in predictOneFace
+    o1 = model1(i1).softmax(-1)[:, 1].cpu().detach().numpy()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/model_def/xception.py", line 225, in forward
+    x = self.features(input)
+  File "/home/yiboliu/FakeDefender_0505/model_def/xception.py", line 184, in features
+    x = self.conv1(input)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 345, in forward
+    return self.conv2d_forward(input, self.weight)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 341, in conv2d_forward
+    return F.conv2d(input, weight, self.bias, self.stride,
+RuntimeError: Input type (torch.FloatTensor) and weight type (torch.cuda.FloatTensor) should be the same
+[2022-05-05 16:00:04,645][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 16:00:04] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 16:02:04,852][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 16:02:04,890][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 16:02:11,967][app.py:1454][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 102, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 96, in predict
+    scores.append(self.predictOneFace(img, landmarks))
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 75, in predictOneFace
+    o1 = model1(i1).softmax(-1)[:, 1].cpu().detach().numpy()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/model_def/xception.py", line 225, in forward
+    x = self.features(input)
+  File "/home/yiboliu/FakeDefender_0505/model_def/xception.py", line 184, in features
+    x = self.conv1(input)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 345, in forward
+    return self.conv2d_forward(input, self.weight)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 341, in conv2d_forward
+    return F.conv2d(input, weight, self.bias, self.stride,
+RuntimeError: Input type (torch.FloatTensor) and weight type (torch.cuda.FloatTensor) should be the same
+[2022-05-05 16:02:11,970][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 16:02:11] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 16:02:19,501][app.py:1454][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 102, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 96, in predict
+    scores.append(self.predictOneFace(img, landmarks))
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 75, in predictOneFace
+    o1 = model1(i1).softmax(-1)[:, 1].cpu().detach().numpy()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/model_def/xception.py", line 225, in forward
+    x = self.features(input)
+  File "/home/yiboliu/FakeDefender_0505/model_def/xception.py", line 184, in features
+    x = self.conv1(input)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 345, in forward
+    return self.conv2d_forward(input, self.weight)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 341, in conv2d_forward
+    return F.conv2d(input, weight, self.bias, self.stride,
+RuntimeError: Input type (torch.FloatTensor) and weight type (torch.cuda.FloatTensor) should be the same
+[2022-05-05 16:02:19,504][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 16:02:19] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 16:03:30,829][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 16:03:30,868][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 16:03:45,673][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 16:03:45] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 16:03:54,622][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 16:03:54] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 16:04:02,788][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 16:04:02] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 16:04:11,352][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 16:04:11] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 16:04:20,776][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 16:04:20] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 16:04:28,671][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 16:04:28] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 16:37:54,063][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 16:37:54,102][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 16:38:51,869][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 16:38:51] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 16:40:32,399][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 16:40:32,436][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 16:40:51,319][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 16:40:51] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 16:46:15,588][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 16:46:15,631][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 16:46:50,983][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 16:46:50] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 16:50:59,208][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 16:50:59,248][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 16:51:21,554][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 16:51:21] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 16:57:10,925][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 16:57:10,964][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 16:57:19,451][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 16:57:19] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 16:58:32,422][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 16:58:32,464][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 16:58:42,145][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 16:58:42] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:00:32,468][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 17:00:32,507][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 17:00:39,314][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:00:39] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:02:26,625][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 17:02:26,664][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 17:02:33,900][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:02:33] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:02:57,317][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 17:02:57,356][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 17:03:07,941][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:03:07] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:03:18,904][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:03:18] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:03:28,301][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:03:28] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:03:38,587][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:03:38] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:03:41,974][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:03:41] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:03:54,805][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:03:54] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:03:56,987][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:03:56] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:03:59,242][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:03:59] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:04:21,456][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 17:04:21,496][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 17:04:29,347][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:04:29] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:04:35,937][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:04:35] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:04:47,419][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:04:47] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:04:49,785][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:04:49] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:04:52,596][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:04:52] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:05:33,852][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 17:05:33,890][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 17:05:36,550][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/new_detector.py", line 53, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/new_detector.py", line 37, in predict
+    start=timeit.default_timer()
+NameError: name 'timeit' is not defined
+[2022-05-05 17:05:36,553][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:05:36] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 17:06:19,094][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 17:06:19,134][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 17:06:24,503][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:06:24] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:06:31,879][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:06:31] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:06:34,866][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:06:34] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:06:38,602][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:06:38] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:06:40,029][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:06:40] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:06:41,494][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:06:41] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:06:42,761][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:06:42] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:06:44,148][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:06:44] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:06:45,421][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:06:45] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:06:46,961][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:06:46] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:06:49,058][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:06:49] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:06:57,034][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:06:57] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:06:58,778][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:06:58] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:07:02,004][_internal.py:225][INFO] - 10.135.6.152 - - [05/May/2022 17:07:02] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:09:14,692][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:09:14] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-05 17:09:53,839][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/new_detector.py", line 54, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/new_detector.py", line 39, in predict
+    boxes, landms = self.face_detector.detect(img)
+  File "/home/yiboliu/FakeDefender_0505/face_utils.py", line 111, in detect
+    loc, conf, landms = self.net(img)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/external/Pytorch_Retinaface/models/retinaface.py", line 110, in forward
+    out = self.body(inputs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/_utils.py", line 63, in forward
+    x = module(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/container.py", line 100, in forward
+    input = module(input)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/resnet.py", line 100, in forward
+    out = self.conv1(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 345, in forward
+    return self.conv2d_forward(input, self.weight)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 341, in conv2d_forward
+    return F.conv2d(input, weight, self.bias, self.stride,
+RuntimeError: CUDA out of memory. Tried to allocate 246.00 MiB (GPU 0; 10.76 GiB total capacity; 9.69 GiB already allocated; 225.56 MiB free; 9.71 GiB reserved in total by PyTorch)
+[2022-05-05 17:09:53,882][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:09:53] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 17:10:02,660][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/new_detector.py", line 54, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/new_detector.py", line 39, in predict
+    boxes, landms = self.face_detector.detect(img)
+  File "/home/yiboliu/FakeDefender_0505/face_utils.py", line 111, in detect
+    loc, conf, landms = self.net(img)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/external/Pytorch_Retinaface/models/retinaface.py", line 110, in forward
+    out = self.body(inputs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/_utils.py", line 63, in forward
+    x = module(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 345, in forward
+    return self.conv2d_forward(input, self.weight)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 341, in conv2d_forward
+    return F.conv2d(input, weight, self.bias, self.stride,
+RuntimeError: CUDA out of memory. Tried to allocate 980.00 MiB (GPU 0; 10.76 GiB total capacity; 9.87 GiB already allocated; 41.56 MiB free; 9.89 GiB reserved in total by PyTorch)
+[2022-05-05 17:10:02,666][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:10:02] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 17:10:42,090][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/new_detector.py", line 54, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/new_detector.py", line 39, in predict
+    boxes, landms = self.face_detector.detect(img)
+  File "/home/yiboliu/FakeDefender_0505/face_utils.py", line 109, in detect
+    img = img.to(device, dtype=torch.float32)
+RuntimeError: CUDA out of memory. Tried to allocate 184.00 MiB (GPU 0; 10.76 GiB total capacity; 9.87 GiB already allocated; 41.56 MiB free; 9.89 GiB reserved in total by PyTorch)
+[2022-05-05 17:10:42,091][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:10:42] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 17:11:45,318][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 17:11:45,359][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 17:12:14,802][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 105, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 92, in predict
+    boxes, landms = self.face_detector.detect(img)
+  File "/home/yiboliu/FakeDefender_0505/face_utils.py", line 111, in detect
+    loc, conf, landms = self.net(img)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/external/Pytorch_Retinaface/models/retinaface.py", line 110, in forward
+    out = self.body(inputs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/_utils.py", line 63, in forward
+    x = module(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/container.py", line 100, in forward
+    input = module(input)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/resnet.py", line 100, in forward
+    out = self.conv1(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 345, in forward
+    return self.conv2d_forward(input, self.weight)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 341, in conv2d_forward
+    return F.conv2d(input, weight, self.bias, self.stride,
+RuntimeError: CUDA out of memory. Tried to allocate 246.00 MiB (GPU 0; 10.76 GiB total capacity; 9.82 GiB already allocated; 85.56 MiB free; 9.85 GiB reserved in total by PyTorch)
+[2022-05-05 17:12:14,808][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:12:14] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 17:12:24,412][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 105, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 92, in predict
+    boxes, landms = self.face_detector.detect(img)
+  File "/home/yiboliu/FakeDefender_0505/face_utils.py", line 109, in detect
+    img = img.to(device, dtype=torch.float32)
+RuntimeError: CUDA out of memory. Tried to allocate 184.00 MiB (GPU 0; 10.76 GiB total capacity; 9.82 GiB already allocated; 85.56 MiB free; 9.85 GiB reserved in total by PyTorch)
+[2022-05-05 17:12:24,414][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:12:24] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 17:12:30,376][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 105, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 92, in predict
+    boxes, landms = self.face_detector.detect(img)
+  File "/home/yiboliu/FakeDefender_0505/face_utils.py", line 111, in detect
+    loc, conf, landms = self.net(img)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/external/Pytorch_Retinaface/models/retinaface.py", line 110, in forward
+    out = self.body(inputs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/_utils.py", line 63, in forward
+    x = module(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 345, in forward
+    return self.conv2d_forward(input, self.weight)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 341, in conv2d_forward
+    return F.conv2d(input, weight, self.bias, self.stride,
+RuntimeError: CUDA out of memory. Tried to allocate 60.00 MiB (GPU 0; 10.76 GiB total capacity; 9.85 GiB already allocated; 59.56 MiB free; 9.87 GiB reserved in total by PyTorch)
+[2022-05-05 17:12:30,379][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:12:30] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 17:12:42,506][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:12:42] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:12:42,520][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:12:42] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:12:57,381][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:12:57] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:13:16,647][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:13:16] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:13:31,300][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:13:31] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:13:57,111][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 105, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 92, in predict
+    boxes, landms = self.face_detector.detect(img)
+  File "/home/yiboliu/FakeDefender_0505/face_utils.py", line 111, in detect
+    loc, conf, landms = self.net(img)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/external/Pytorch_Retinaface/models/retinaface.py", line 110, in forward
+    out = self.body(inputs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/_utils.py", line 63, in forward
+    x = module(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/container.py", line 100, in forward
+    input = module(input)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/resnet.py", line 109, in forward
+    out = self.bn3(out)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/batchnorm.py", line 104, in forward
+    return F.batch_norm(
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/functional.py", line 1668, in batch_norm
+    return torch.batch_norm(
+RuntimeError: CUDA out of memory. Tried to allocate 980.00 MiB (GPU 0; 10.76 GiB total capacity; 8.86 GiB already allocated; 691.56 MiB free; 9.25 GiB reserved in total by PyTorch)
+[2022-05-05 17:13:57,133][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:13:57] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 17:14:14,173][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 105, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 92, in predict
+    boxes, landms = self.face_detector.detect(img)
+  File "/home/yiboliu/FakeDefender_0505/face_utils.py", line 111, in detect
+    loc, conf, landms = self.net(img)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/external/Pytorch_Retinaface/models/retinaface.py", line 110, in forward
+    out = self.body(inputs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/_utils.py", line 63, in forward
+    x = module(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/container.py", line 100, in forward
+    input = module(input)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/resnet.py", line 112, in forward
+    identity = self.downsample(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/container.py", line 100, in forward
+    input = module(input)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 345, in forward
+    return self.conv2d_forward(input, self.weight)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 341, in conv2d_forward
+    return F.conv2d(input, weight, self.bias, self.stride,
+RuntimeError: CUDA out of memory. Tried to allocate 160.00 MiB (GPU 0; 10.76 GiB total capacity; 9.78 GiB already allocated; 91.56 MiB free; 9.84 GiB reserved in total by PyTorch)
+[2022-05-05 17:14:14,174][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:14:14] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 17:16:12,558][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 105, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 92, in predict
+    boxes, landms = self.face_detector.detect(img)
+  File "/home/yiboliu/FakeDefender_0505/face_utils.py", line 109, in detect
+    img = img.to(device, dtype=torch.float32)
+RuntimeError: CUDA out of memory. Tried to allocate 184.00 MiB (GPU 0; 10.76 GiB total capacity; 9.78 GiB already allocated; 91.56 MiB free; 9.84 GiB reserved in total by PyTorch)
+[2022-05-05 17:16:12,564][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:16:12] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 17:16:26,739][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 105, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 92, in predict
+    boxes, landms = self.face_detector.detect(img)
+  File "/home/yiboliu/FakeDefender_0505/face_utils.py", line 111, in detect
+    loc, conf, landms = self.net(img)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/external/Pytorch_Retinaface/models/retinaface.py", line 110, in forward
+    out = self.body(inputs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/_utils.py", line 63, in forward
+    x = module(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/container.py", line 100, in forward
+    input = module(input)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/resnet.py", line 108, in forward
+    out = self.conv3(out)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 345, in forward
+    return self.conv2d_forward(input, self.weight)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 341, in conv2d_forward
+    return F.conv2d(input, weight, self.bias, self.stride,
+RuntimeError: CUDA out of memory. Tried to allocate 26.00 MiB (GPU 0; 10.76 GiB total capacity; 9.88 GiB already allocated; 25.56 MiB free; 9.90 GiB reserved in total by PyTorch)
+[2022-05-05 17:16:26,780][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:16:26] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 17:16:34,700][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:16:34] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:19:18,695][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:19:18] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-05 17:19:37,938][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:19:37] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:20:54,524][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:20:54] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-05 17:21:06,387][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:21:06] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:21:22,000][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 17:21:22,039][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 17:21:53,350][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:21:53] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-05 17:22:06,071][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:22:06] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:22:06,074][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:22:06] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:22:35,981][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 17:22:36,020][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 17:22:41,005][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:22:41] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-05 17:22:54,068][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:22:54] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:22:54,072][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:22:54] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:24:05,435][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 17:24:05,475][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 17:24:11,302][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:24:11] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-05 17:24:23,694][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:24:23] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:24:23,698][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:24:23] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:24:38,715][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:24:38] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:25:10,378][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:25:10] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:25:34,616][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:25:34] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:25:34,635][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:25:34] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:27:43,416][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:27:43] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-05 17:27:54,134][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:27:54] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-05 17:28:08,430][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:28:08] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:28:18,046][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:28:18] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:30:01,217][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:30:01] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-05 17:30:48,543][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:30:48] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-05 17:31:02,080][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:31:02] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:31:09,465][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:31:09] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:31:33,651][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:31:33] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-05 17:31:46,701][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:31:46] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:31:58,958][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:31:58] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:32:15,228][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:32:15] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:32:37,180][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:32:37] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-05 17:34:10,501][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:34:10] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-05 17:36:02,548][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:36:02] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-05 17:36:18,802][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 105, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 92, in predict
+    boxes, landms = self.face_detector.detect(img)
+  File "/home/yiboliu/FakeDefender_0505/face_utils.py", line 111, in detect
+    loc, conf, landms = self.net(img)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/external/Pytorch_Retinaface/models/retinaface.py", line 116, in forward
+    feature1 = self.ssh1(fpn[0])
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/external/Pytorch_Retinaface/models/net.py", line 70, in forward
+    out = F.relu(out)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/functional.py", line 914, in relu
+    result = torch.relu(input)
+RuntimeError: CUDA out of memory. Tried to allocate 40.00 MiB (GPU 0; 10.76 GiB total capacity; 9.84 GiB already allocated; 39.56 MiB free; 9.89 GiB reserved in total by PyTorch)
+[2022-05-05 17:36:18,807][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:36:18] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 17:36:19,478][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:36:19] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:36:20,401][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:36:20] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:36:21,689][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:36:21] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:36:22,700][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:36:22] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:36:23,860][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:36:23] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:36:24,968][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:36:24] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:36:26,098][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:36:26] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:36:27,389][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:36:27] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:36:28,592][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:36:28] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:36:30,133][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:36:30] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:36:31,463][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:36:31] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:36:32,854][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:36:32] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:36:34,388][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:36:34] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:36:36,168][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:36:36] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:36:40,306][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:36:40] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:38:06,466][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 17:38:06,513][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 17:39:21,317][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:39:21] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-05 17:39:38,754][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 105, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 92, in predict
+    boxes, landms = self.face_detector.detect(img)
+  File "/home/yiboliu/FakeDefender_0505/face_utils.py", line 111, in detect
+    loc, conf, landms = self.net(img)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/external/Pytorch_Retinaface/models/retinaface.py", line 116, in forward
+    feature1 = self.ssh1(fpn[0])
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/external/Pytorch_Retinaface/models/net.py", line 64, in forward
+    conv5X5 = self.conv5X5_2(conv5X5_1)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/container.py", line 100, in forward
+    input = module(input)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 345, in forward
+    return self.conv2d_forward(input, self.weight)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 341, in conv2d_forward
+    return F.conv2d(input, weight, self.bias, self.stride,
+RuntimeError: CUDA out of memory. Tried to allocate 710.00 MiB (GPU 0; 10.76 GiB total capacity; 9.83 GiB already allocated; 45.56 MiB free; 9.88 GiB reserved in total by PyTorch)
+[2022-05-05 17:39:38,758][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:39:38] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 17:39:38,906][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 105, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 92, in predict
+    boxes, landms = self.face_detector.detect(img)
+  File "/home/yiboliu/FakeDefender_0505/face_utils.py", line 111, in detect
+    loc, conf, landms = self.net(img)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/external/Pytorch_Retinaface/models/retinaface.py", line 110, in forward
+    out = self.body(inputs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/_utils.py", line 63, in forward
+    x = module(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/container.py", line 100, in forward
+    input = module(input)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/resnet.py", line 105, in forward
+    out = self.bn2(out)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/batchnorm.py", line 104, in forward
+    return F.batch_norm(
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/functional.py", line 1668, in batch_norm
+    return torch.batch_norm(
+RuntimeError: CUDA out of memory. Tried to allocate 40.00 MiB (GPU 0; 10.76 GiB total capacity; 9.84 GiB already allocated; 11.56 MiB free; 9.92 GiB reserved in total by PyTorch)
+[2022-05-05 17:39:38,919][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:39:38] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 17:39:41,028][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 105, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 99, in predict
+    scores.append(self.predictOneFace(img, landmarks))
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 79, in predictOneFace
+    o2, _, _ = model2(i2)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/model_def/wsdan.py", line 134, in forward
+    feature_maps = self.features(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/model_def/xception_wsdan.py", line 117, in forward
+    x = self.block1(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/model_def/xception_wsdan.py", line 62, in forward
+    x = self.rep(inp)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/container.py", line 100, in forward
+    input = module(input)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/model_def/xception_wsdan.py", line 19, in forward
+    x = self.pointwise(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 345, in forward
+    return self.conv2d_forward(input, self.weight)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 341, in conv2d_forward
+    return F.conv2d(input, weight, self.bias, self.stride,
+RuntimeError: CUDA out of memory. Tried to allocate 8.13 GiB (GPU 0; 10.76 GiB total capacity; 9.18 GiB already allocated; 741.56 MiB free; 9.21 GiB reserved in total by PyTorch)
+[2022-05-05 17:39:41,047][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:39:41] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 17:39:41,962][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:39:41] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:39:41,973][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:39:41] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:39:42,505][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:39:42] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:39:44,289][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:39:44] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:39:46,116][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:39:46] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:39:47,478][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:39:47] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:39:47,843][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:39:47] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:40:41,976][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-05 17:40:42,016][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-05 17:42:01,118][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:42:01] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-05 17:42:15,545][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:42:15] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-05 17:42:28,068][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 105, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 92, in predict
+    boxes, landms = self.face_detector.detect(img)
+  File "/home/yiboliu/FakeDefender_0505/face_utils.py", line 111, in detect
+    loc, conf, landms = self.net(img)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/external/Pytorch_Retinaface/models/retinaface.py", line 110, in forward
+    out = self.body(inputs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/_utils.py", line 63, in forward
+    x = module(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/container.py", line 100, in forward
+    input = module(input)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/resnet.py", line 112, in forward
+    identity = self.downsample(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/container.py", line 100, in forward
+    input = module(input)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 345, in forward
+    return self.conv2d_forward(input, self.weight)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 341, in conv2d_forward
+    return F.conv2d(input, weight, self.bias, self.stride,
+RuntimeError: CUDA out of memory. Tried to allocate 156.00 MiB (GPU 0; 10.76 GiB total capacity; 9.85 GiB already allocated; 25.56 MiB free; 9.90 GiB reserved in total by PyTorch)
+[2022-05-05 17:42:28,073][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:42:28] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 17:42:29,063][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 105, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 99, in predict
+    scores.append(self.predictOneFace(img, landmarks))
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 75, in predictOneFace
+    o1 = model1(i1).softmax(-1)[:, 1].cpu().detach().numpy()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/model_def/xception.py", line 225, in forward
+    x = self.features(input)
+  File "/home/yiboliu/FakeDefender_0505/model_def/xception.py", line 196, in features
+    x = self.block4(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/model_def/xception.py", line 109, in forward
+    x = self.rep(inp)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/container.py", line 100, in forward
+    input = module(input)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/model_def/xception.py", line 64, in forward
+    x = self.pointwise(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 345, in forward
+    return self.conv2d_forward(input, self.weight)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 341, in conv2d_forward
+    return F.conv2d(input, weight, self.bias, self.stride,
+RuntimeError: CUDA out of memory. Tried to allocate 4.30 GiB (GPU 0; 10.76 GiB total capacity; 4.92 GiB already allocated; 1.05 GiB free; 8.88 GiB reserved in total by PyTorch)
+[2022-05-05 17:42:29,065][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:42:29] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-05 17:42:29,990][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:42:29] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:42:30,097][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:42:30] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:42:30,869][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:42:30] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:42:32,021][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:42:32] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:42:32,957][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:42:32] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:42:34,078][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:42:34] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:42:36,337][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:42:36] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:42:36,432][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:42:36] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:42:37,507][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:42:37] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:42:38,687][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:42:38] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:42:40,850][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:42:40] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:42:41,906][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:42:41] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:42:43,904][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:42:43] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:43:36,144][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:43:36] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:43:37,437][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:43:37] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:43:38,803][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:43:38] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:43:40,427][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:43:40] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:43:40,829][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:43:40] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:43:41,755][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:43:41] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:43:42,929][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:43:42] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:43:43,965][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:43:43] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:43:45,164][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:43:45] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:43:46,270][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:43:46] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:43:47,426][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:43:47] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:43:50,634][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:43:50] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:43:52,998][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:43:52] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:44:56,829][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:44:56] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:44:57,794][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:44:57] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:44:58,863][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:44:58] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:44:59,893][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:44:59] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:45:00,937][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:45:00] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:45:02,166][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:45:02] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-05 17:45:04,855][_internal.py:225][INFO] - 10.135.0.18 - - [05/May/2022 17:45:04] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 09:35:17,163][logger.py:13][INFO] - -------------------------------New Running--------------------------------
+[2022-05-06 09:35:17,205][_internal.py:225][INFO] -  * Running on http://10.136.126.13:5000/ (Press CTRL+C to quit)
+[2022-05-06 09:35:27,397][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 09:35:27] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 09:37:35,751][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 09:37:35] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 09:39:11,120][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 09:39:11] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 09:39:11,639][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 09:39:11] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 09:39:12,291][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 09:39:12] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 10:05:54,384][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:05:54] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 10:06:12,846][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:06:12] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:06:31,126][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:06:31] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:07:45,980][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 105, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 92, in predict
+    boxes, landms = self.face_detector.detect(img)
+  File "/home/yiboliu/FakeDefender_0505/face_utils.py", line 111, in detect
+    loc, conf, landms = self.net(img)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/external/Pytorch_Retinaface/models/retinaface.py", line 110, in forward
+    out = self.body(inputs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/_utils.py", line 63, in forward
+    x = module(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/container.py", line 100, in forward
+    input = module(input)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/resnet.py", line 100, in forward
+    out = self.conv1(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 345, in forward
+    return self.conv2d_forward(input, self.weight)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 341, in conv2d_forward
+    return F.conv2d(input, weight, self.bias, self.stride,
+RuntimeError: CUDA out of memory. Tried to allocate 246.00 MiB (GPU 0; 10.76 GiB total capacity; 9.82 GiB already allocated; 85.56 MiB free; 9.85 GiB reserved in total by PyTorch)
+[2022-05-06 10:07:45,985][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:07:45] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-06 10:07:56,997][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:07:56] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 10:08:14,420][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 105, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 92, in predict
+    boxes, landms = self.face_detector.detect(img)
+  File "/home/yiboliu/FakeDefender_0505/face_utils.py", line 109, in detect
+    img = img.to(device, dtype=torch.float32)
+RuntimeError: CUDA out of memory. Tried to allocate 184.00 MiB (GPU 0; 10.76 GiB total capacity; 9.82 GiB already allocated; 85.56 MiB free; 9.85 GiB reserved in total by PyTorch)
+[2022-05-06 10:08:14,422][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:08:14] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-06 10:08:19,188][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:08:19] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 10:08:28,873][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 105, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 92, in predict
+    boxes, landms = self.face_detector.detect(img)
+  File "/home/yiboliu/FakeDefender_0505/face_utils.py", line 111, in detect
+    loc, conf, landms = self.net(img)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/external/Pytorch_Retinaface/models/retinaface.py", line 110, in forward
+    out = self.body(inputs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/_utils.py", line 63, in forward
+    x = module(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/batchnorm.py", line 104, in forward
+    return F.batch_norm(
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/functional.py", line 1668, in batch_norm
+    return torch.batch_norm(
+RuntimeError: CUDA out of memory. Tried to allocate 62.00 MiB (GPU 0; 10.76 GiB total capacity; 9.89 GiB already allocated; 23.56 MiB free; 9.91 GiB reserved in total by PyTorch)
+[2022-05-06 10:08:28,876][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:08:28] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-06 10:08:56,936][_internal.py:225][INFO] - 10.134.40.113 - - [06/May/2022 10:08:56] "POST /user/ HTTP/1.1" 200 -
+[2022-05-06 10:10:55,172][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:10:55] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 10:10:57,862][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:10:57] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 10:11:06,805][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:11:06] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:11:28,699][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:11:28] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:18:41,458][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:18:41] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 10:19:01,214][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:19:01] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:19:18,800][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:19:18] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:22:55,716][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:22:55] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 10:23:03,744][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:23:03] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:23:08,216][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:23:08] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:27:17,288][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:27:17] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:27:29,848][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:27:29] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:28:01,290][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:28:01] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:33:19,190][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:33:19] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 10:33:32,294][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:33:32] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:33:37,046][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:33:37] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:40:43,683][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:40:43] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 10:40:51,195][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:40:51] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:40:56,767][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:40:56] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:41:43,037][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:41:43] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 10:42:34,089][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:42:34] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 10:42:41,841][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:42:41] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:42:46,544][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:42:46] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:44:09,983][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:44:09] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 10:44:20,448][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:44:20] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:44:24,340][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:44:24] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:46:42,210][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:46:42] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 10:47:28,585][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:47:28] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 10:48:46,864][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:48:46] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 10:51:14,097][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:51:14] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 10:54:25,589][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:54:25] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 10:56:09,597][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:56:09] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 10:56:27,104][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:56:27] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 10:56:45,636][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 105, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 92, in predict
+    boxes, landms = self.face_detector.detect(img)
+  File "/home/yiboliu/FakeDefender_0505/face_utils.py", line 111, in detect
+    loc, conf, landms = self.net(img)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/external/Pytorch_Retinaface/models/retinaface.py", line 110, in forward
+    out = self.body(inputs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/_utils.py", line 63, in forward
+    x = module(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/container.py", line 100, in forward
+    input = module(input)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torchvision/models/resnet.py", line 112, in forward
+    identity = self.downsample(x)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/container.py", line 100, in forward
+    input = module(input)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/batchnorm.py", line 104, in forward
+    return F.batch_norm(
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/functional.py", line 1668, in batch_norm
+    return torch.batch_norm(
+RuntimeError: CUDA out of memory. Tried to allocate 306.00 MiB (GPU 0; 10.76 GiB total capacity; 9.65 GiB already allocated; 191.56 MiB free; 9.74 GiB reserved in total by PyTorch)
+[2022-05-06 10:56:45,641][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:56:45] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-06 10:59:44,880][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 10:59:44] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 11:03:46,670][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:03:46] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 11:04:00,823][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:04:00] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 11:13:34,482][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:13:34] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 11:17:01,669][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:17:01] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 11:18:42,964][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:18:42] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 11:19:05,707][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:19:05] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 11:19:27,587][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:19:27] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:19:28,733][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:19:28] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:19:28,957][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:19:28] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:19:31,677][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:19:31] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:19:33,738][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:19:33] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:19:35,187][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:19:35] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:19:37,136][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:19:37] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:19:38,573][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:19:38] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:19:40,069][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:19:40] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:19:41,976][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:19:41] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:19:43,569][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:19:43] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:19:45,060][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:19:45] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:19:45,551][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:19:45] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:19:46,228][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:19:46] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:19:47,516][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:19:47] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:19:48,048][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:19:48] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:19:48,987][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:19:48] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:35:35,114][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:35:35] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 11:35:42,784][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:35:42] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 11:35:58,950][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:35:58] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:35:59,718][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:35:59] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:00,576][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:00] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:01,178][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:01] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:01,874][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:01] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:02,659][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:02] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:03,371][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:03] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:04,156][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:04] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:04,827][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:04] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:05,685][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:05] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:07,011][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:07] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:08,026][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:08] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:08,646][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:08] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:09,501][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:09] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:10,207][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:10] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:10,888][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:10] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:12,724][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:12] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:13,898][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:13] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:15,204][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:15] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:16,552][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:16] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:17,258][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:17] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:18,324][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:18] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:19,438][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:19] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:20,761][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:20] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:21,777][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:21] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:22,840][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:22] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:36:25,073][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:36:25] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:37:31,253][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:37:31] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 11:37:45,096][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:37:45] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:37:47,430][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:37:47] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:37:47,739][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:37:47] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:37:48,948][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:37:48] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:37:50,488][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:37:50] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:37:52,017][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:37:52] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:43:12,222][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,410][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,415][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,519][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,520][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,549][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,569][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,601][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,618][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,623][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,669][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,673][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,676][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,713][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,714][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,719][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,732][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,754][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,766][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,778][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,779][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,816][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,818][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,819][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,857][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,870][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,873][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,889][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,916][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,921][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,936][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,973][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,984][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:12,988][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:12] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,009][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,021][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,022][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,027][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,029][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,035][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,039][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,041][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,046][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,049][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,056][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,058][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,072][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,073][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,079][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,080][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,081][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,086][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,102][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,110][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,111][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,125][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,126][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,127][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,129][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,132][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,134][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,137][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,139][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,154][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,161][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,165][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,177][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,178][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,180][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,181][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,190][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,192][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,207][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,211][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,222][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,228][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,229][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,231][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,232][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,238][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,241][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,244][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,254][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,258][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,260][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,261][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,263][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,275][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,278][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,280][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,282][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,283][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,288][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,293][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,295][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,309][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,312][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,315][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,330][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,332][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,339][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,344][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,346][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,360][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,361][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,365][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,379][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,388][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,396][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,462][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,506][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,517][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,527][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,630][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,646][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,664][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:43:13,684][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:43:13] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 11:44:33,990][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:44:33] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:45:56,901][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:45:56] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:45:58,177][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:45:58] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:45:59,664][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:45:59] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:00,996][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:00] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:02,338][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:02] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:03,884][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:03] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:04,061][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:04] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:29,747][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:29] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:31,282][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:31] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:32,550][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:32] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:33,634][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:33] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:35,150][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:35] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:36,462][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:36] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:38,269][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:38] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:39,674][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:39] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:41,026][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:41] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:42,365][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:42] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:44,189][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:44] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:46,343][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:46] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:48,354][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:48] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:50,075][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:50] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:51,641][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:51] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:53,365][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:53] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:46:53,771][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:46:53] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:47:33,588][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:47:33] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:47:34,685][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:47:34] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:47:36,293][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:47:36] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:47:37,569][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:47:37] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 11:47:39,401][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 11:47:39] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 12:57:20,247][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 12:57:20] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 12:58:32,490][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 12:58:32] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 12:58:47,183][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 12:58:47] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 12:58:49,174][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 12:58:49] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 12:58:50,474][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 12:58:50] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 12:58:51,852][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 12:58:51] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 12:58:52,343][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 12:58:52] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 12:58:53,152][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 12:58:53] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 12:58:54,749][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 12:58:54] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 12:58:56,557][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 12:58:56] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 12:58:57,682][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 12:58:57] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 12:58:59,246][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 12:58:59] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 12:59:00,765][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 12:59:00] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 12:59:02,254][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 12:59:02] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:01:32,791][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:01:32] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 13:02:07,002][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:02:07] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 13:02:17,987][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:02:17] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:02:19,097][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:02:19] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:02:20,249][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:02:20] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:02:21,329][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:02:21] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:02:22,153][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:02:22] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:02:23,696][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:02:23] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:02:24,586][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:02:24] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:08:14,270][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:08:14] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 13:09:01,466][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:09:01] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:09:02,815][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:09:02] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:09:03,902][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:09:03] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:09:04,948][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:09:04] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:09:05,725][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:09:05] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:09:06,909][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:09:06] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:09:07,394][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:09:07] "POST /user/get_app_info HTTP/1.1" 200 -
+[2022-05-06 13:09:08,981][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:09:08] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:09:09,281][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:09:09] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:09:09,985][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:09:09] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:09:10,901][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:09:10] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:09:12,459][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:09:12] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:09:12,843][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:09:12] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:09:13,264][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:09:13] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:09:15,138][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:09:15] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:32:13,689][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:32:13] "POST /user/check_state HTTP/1.1" 200 -
+[2022-05-06 13:32:37,982][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:32:37] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:32:38,198][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:32:38] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:32:39,015][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:32:39] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:32:40,018][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:32:40] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:32:40,025][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:32:40] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:32:40,526][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:32:40] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:32:41,407][app.py:1457][ERROR] - Exception on /user/predict [POST]
+Traceback (most recent call last):
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/app/views/user/user_view.py", line 74, in predict
+    faces, scores = loader.predict_raw(img_raw)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 105, in predict_raw
+    return self.predict(img)
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 99, in predict
+    scores.append(self.predictOneFace(img, landmarks))
+  File "/home/yiboliu/FakeDefender_0505/detector.py", line 83, in predictOneFace
+    o3, _, _ = model3(i3)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/model_def/wsdan.py", line 134, in forward
+    feature_maps = self.features(x)
+  File "/home/yiboliu/FakeDefender_0505/external/EfficientNet_PyTorch/efficientnet_pytorch/model.py", line 182, in extract_features
+    x = block(x, drop_connect_rate=drop_connect_rate)
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/external/EfficientNet_PyTorch/efficientnet_pytorch/model.py", line 77, in forward
+    x = self._swish(self._bn0(self._expand_conv(inputs)))
+  File "/home/yiboliu/.conda/envs/DFDC_new/lib/python3.8/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yiboliu/FakeDefender_0505/external/EfficientNet_PyTorch/efficientnet_pytorch/utils.py", line 52, in forward
+    return SwishImplementation.apply(x)
+  File "/home/yiboliu/FakeDefender_0505/external/EfficientNet_PyTorch/efficientnet_pytorch/utils.py", line 39, in forward
+    result = i * torch.sigmoid(i)
+RuntimeError: CUDA out of memory. Tried to allocate 20.00 MiB (GPU 0; 10.76 GiB total capacity; 9.86 GiB already allocated; 11.56 MiB free; 9.92 GiB reserved in total by PyTorch)
+[2022-05-06 13:32:41,410][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:32:41] "[35m[1mPOST /user/predict HTTP/1.1[0m" 500 -
+[2022-05-06 13:32:42,303][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:32:42] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:32:42,656][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:32:42] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:32:44,445][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:32:44] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:32:44,502][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:32:44] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:32:45,002][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:32:45] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:32:45,075][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:32:45] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:32:45,616][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:32:45] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:32:45,645][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:32:45] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:32:45,892][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:32:45] "POST /user/predict HTTP/1.1" 200 -
+[2022-05-06 13:32:46,442][_internal.py:225][INFO] - 10.134.40.75 - - [06/May/2022 13:32:46] "POST /user/predict HTTP/1.1" 200 -

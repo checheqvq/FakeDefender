@@ -1,3 +1,4 @@
+from distutils.log import debug
 from app import app
 
 
@@ -9,6 +10,6 @@ def hello():
 
 if __name__ == "__main__":
     app.run(
-        host='127.0.0.1',
+        host='10.136.126.13',
         port=5000
     )

@@ -31,17 +31,25 @@ password = MD5('NE@5t4LniTJzmh')
 phone_code_map = {}
 
 
-def send_verif_code(phone, phone_code_map):
+def send_verif_code(target_phone, phone_code_map):
     code = random.randint(1000, 9999)
-    data = parse.urlencode({'u': user, 'p': password, 'm': phone,
+    data = parse.urlencode({'u': user, 'p': password, 'm': target_phone,
                             'c': f'【FakeDefender】您的验证码是{code}。如非本人操作，请忽略本短信。'})
     send_url = smsapi + 'sms?' + data
     response = request.urlopen(send_url)
     the_page = response.read().decode('utf-8')
     if the_page == '0':
-        phone_code_map[phone] = str(code)
-    current_app.logger.info(f"{phone} 的验证码发送状态{statusStr[the_page]}")
+        phone_code_map[target_phone] = str(code)
+    current_app.logger.info(f"{target_phone} 的验证码发送状态{statusStr[the_page]}")
 
 
 def del_verif_code(phone, phone_code_map):
     phone_code_map.pop(phone)
+
+def send_SMS(target_phone, phone):
+    data = parse.urlencode({'u': user, 'p': password, 'm': target_phone,
+                            'c': f'【FakeDefender】您监护的用户正处于虚假人脸的风险当中。用户手机号为{phone}'})
+    send_url = smsapi + 'sms?' + data
+    response = request.urlopen(send_url)
+    the_page = response.read().decode('utf-8')
+    current_app.logger.info(f"{target_phone} 的告警发送状态{statusStr[the_page]}")

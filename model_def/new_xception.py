@@ -200,13 +200,13 @@ class Xception(nn.Module):
         self.bn1_ori = nn.BatchNorm2d(32)
         self.conv2_ori = nn.Conv2d(32, 32, 3, bias=False)
         self.bn2_ori = nn.BatchNorm2d(32)
-        self.CBAMBlock_ori = CBAMBlock("Conv", 5, channels=32, gamma=2, b=1)
+        # self.CBAMBlock_ori = CBAMBlock("Conv", 5, channels=32, gamma=2, b=1)
 
         self.conv1_aug = nn.Conv2d(3, 32, 3, 2, 0, bias=False)
         self.bn1_aug = nn.BatchNorm2d(32)
         self.conv2_aug = nn.Conv2d(32, 32, 3, bias=False)
         self.bn2_aug = nn.BatchNorm2d(32)
-        self.CBAMBlock_aug = CBAMBlock("Conv", 5, channels=32, gamma=2, b=1)
+        # self.CBAMBlock_aug = CBAMBlock("Conv", 5, channels=32, gamma=2, b=1)
 
         self.block1 = Block(64, 128, 2, 2, start_with_relu=False, grow_first=True)
         self.block2 = Block(128, 256, 2, 2, start_with_relu=True, grow_first=True)
@@ -251,7 +251,7 @@ class Xception(nn.Module):
         x = self.conv2_ori(x)
         x = self.bn2_ori(x)
         x = self.relu(x)
-        x = self.CBAMBlock_ori(x)
+        # x = self.CBAMBlock_ori(x)
         return x
 
     def entry_forward_branch_aug(self, x):
@@ -262,7 +262,7 @@ class Xception(nn.Module):
         x = self.conv2_aug(x)
         x = self.bn2_aug(x)
         x = self.relu(x)
-        x = self.CBAMBlock_aug(x)
+        # x = self.CBAMBlock_aug(x)
         return x
 
     def forward(self, x, x_aug):
@@ -297,6 +297,6 @@ class Xception(nn.Module):
 def xception(parameters=False, **kwargs):
     model = Xception(**kwargs).cuda()
     if parameters:
-        dict = torch.load("../parameters/best.pth")
-        model.load_state_dict(dict["state_dict"])
+        dict = torch.load("./parameters/best.pth")
+        model.load_state_dict(dict)
     return model

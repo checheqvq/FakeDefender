@@ -1,9 +1,11 @@
 import base64
+from tkinter import E
+from tkinter.messagebox import NO
 import flask_login
 
 from detector import loader
 from flask import jsonify, request, current_app
-from app.extensions import login_manager, send_verif_code, phone_code_map, del_verif_code, get_app_info
+from app.extensions import login_manager, send_verif_code, phone_code_map, del_verif_code, get_app_info, send_SMS, Mailer
 from app.models.user import User
 from app.blueprints import user_app
 
@@ -88,8 +90,10 @@ def predict():
                     "y2": int(face[3].item()),
                     "score": scores[i].item()
                 })
+                print(scores[i].item())
 
         response["faces"] = faceList
+        print(response)
         return message(0, "识别成功", response)
 
 
@@ -102,6 +106,29 @@ def get_app():
         return message(0, "获取成功", app_info)
     else:
         return message(1, "获取失败", None)
+
+
+@user_app.route('/SMS_alarm', methods=['GET', 'POST'])
+@flask_login.login_required
+def SMS_alarm():
+    try:
+        data = request.get_json()
+        send_SMS(data['target_phone'], data['phone'])
+        return message(0, "短信告警成功", None)
+    except Exception as e:
+        print(e)
+        return message(1, "短信告警失败", None)
+
+
+@user_app.route('/email_alarm', methods=['GET', 'POST'])
+@flask_login.login_required
+def email_alarm():
+    try:
+        data = request.get_json()
+        Mailer().mail(data['target_email'], "FakeDefender风险提醒", f"您监护的用户当前处于危险当中，用户手机号为{data['phone']}", data['img'])
+        return message(0, "邮件告警成功", None)
+    except:
+        return message(1, "邮件告警失败", None)
 
 
 @user_app.route('/check_state', methods=['GET', 'POST'])
